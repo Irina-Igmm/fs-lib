@@ -1,0 +1,2 @@
+# fs-lib
+Angular library

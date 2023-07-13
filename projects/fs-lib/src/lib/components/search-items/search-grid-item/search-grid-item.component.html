@@ -1,0 +1,26 @@
+  <div class="w-100 h-100">
+    <div class="margin w-100 h-100 omit-globalContext alg-content-item">
+      <div  class=" w-100 h-100 thumbnail-item pb-3">
+        <div class="thumblail-icon row justify-content-center pr-5">
+          <span class="thumb-fld bg-0" >
+            <img [src]="'assets/images/icons/folder.png'" alt="">
+            <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">folder</mat-icon> -->
+          </span>
+        </div>
+      </div>
+
+      <div class="content-item">
+        <div class="content-title">
+          <h6 class="info-title">
+            {{storage.name}}
+            <span class="infos-count">
+              <span class="size">{{storage.size}}</span>
+              <span class="file-in" *ngIf="storage.type == 'FLD'">
+                <!-- - {{file.f_in}} -->
+              </span>
+            </span>
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>

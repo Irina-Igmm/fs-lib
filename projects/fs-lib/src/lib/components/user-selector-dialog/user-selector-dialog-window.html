@@ -1,0 +1,11 @@
+<div class="modal-header">
+  <h4 class="modal-title">Hi there!</h4>
+  <button type="button" class="btn btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+  </button>
+</div>
+<div class="modal-body">
+  <user-input-chips ></user-input-chips>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark shadow-none" ngbAutofocus (click)="activeModal.close('Close click')">Done</button>
+</div>

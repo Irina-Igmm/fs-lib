@@ -1,0 +1,36 @@
+<mat-list-item>
+  <!-- <mat-icon matListItemIcon>folder</mat-icon> -->
+  <!-- <div  class=" flex-row omit-globalContext h-100 w-100">
+  <div class="col-1 thumbnail-item omit-globalContext">
+    <span class="thumblail-icon omit-globalContext">
+      <span class="thumb-fld">
+        <img [src]="'assets/images/icons/folder-icon.png'" alt="">
+      </span>
+    </span>
+  </div>
+
+  <div matListItemTitle>{{folder?.name}}</div>
+
+  <div matListItemLine>{{folder?.id}}</div>
+
+  <div class="col-9 flex-grow-1"></div>
+
+</div> -->
+
+  <div class="bloc-content d-flex align-items-center">
+    <div class="bloc-start d-flex align-items-center">
+      <div class="thumbnail-item>">
+        <span class="thumblail-icon">
+          <span class="thumb-fld">
+            <img [src]="'assets/images/icons/folder-icon.png'" alt="" />
+          </span>
+        </span>
+      </div>
+      <div matListItemTitle class="bloc-start-name">{{ folder?.name }}</div>
+    </div>
+    <div class="bloc-end d-flex justify-content-between">
+      <div matListItemLine> {{ folder?.createdAt | date:'dd-MM-yyyy' }} </div>
+      <div matListItemLine> {{ folder?.childrenCount }} contenus </div>
+    </div>
+  </div>
+</mat-list-item>

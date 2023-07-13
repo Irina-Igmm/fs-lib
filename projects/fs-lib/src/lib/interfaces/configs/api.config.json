@@ -1,0 +1,23 @@
+{
+  "storage": {
+    "paginatedFilesList": "file/paginated-list",
+    "paginatedFoldersList": "folder/paginated-list",
+    "paginatedSharedFilesList": "file/shared/paginated-list",
+    "paginatedSharedFoldersList": "folder/shared/paginated-list",
+    "foldersListByParentId": "folder/by-parent-id",
+    "newFolder": "folder/create",
+    "renameFolder": "storage/rename",
+    "deleteStorage": "storage/delete",
+    "archiveStorage": "storage/archive",
+    "share": "storage/share",
+    "recentFile": "file/recent-files",
+    "paginatedArchivedFilesList": "file/archived/paginated-list",
+    "paginatedArchivedFoldersList": "folder/archived/paginated-list",
+    "uploadFiles": "storage/upload-files",
+    "uploadFolders": "storage/upload",
+    "downloadStorage": "storage/download",
+    "searchStorage": "storage/search",
+    "moveStorage": "storage/move",
+    "copyFiles": "storage/copy"
+  }
+}

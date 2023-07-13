@@ -1,0 +1,56 @@
+
+
+<div class="w-100 file-management-container"
+
+>
+  <div cdkDropList [cdkDropListData]="files" class="grid_view drop-area mosaic-list" (cdkDropListDropped)="drop($event)">
+
+    <div class="w-100 list-title">
+      <h4>
+        <mat-checkbox
+          [checked]="allComplete"
+          [color]="'primary'"
+          [indeterminate]="someComplete()"
+          (change)="setAll($event)"
+        >
+        </mat-checkbox>
+        Fichiers
+      </h4>
+    </div>
+    <!-- <app-file-grid-item [file]="file" class="" *ngFor="let file of files" [cdkDragData]="file" cdkDrag>
+
+    </app-file-grid-item> -->
+
+    <ul class="list-group dropable-list row"
+        id="all"
+        cdkDropList
+        [cdkDropListData]="files"
+        (cdkDropListDropped)="drop($event)">
+      <li
+        ngContextMenu="fileContext"
+        class="list-group-item dropable-list-item col-lg-3 col-md-4 col-sm-10 col-10 omit-globalContext h-100"
+        *ngFor="let file of files; let i = index"
+        [ngContextData]="file"
+        [cdkDragData]="file" cdkDrag
+      >
+      <div class="row h-75">
+        <div class="col-12">
+          <mat-checkbox
+          [checked]="checkedFileList[i]?.completed"
+            (change)="checkChange($event, file.id)" ></mat-checkbox>
+        </div>
+
+        <div class=" col-12 h-75">
+          <app-file-grid-item  ngContextMenu="fileContext" [file]="file" class="" (mousedown)="onMouseDown(i, 'file')" [cdkDragData]="file" cdkDrag></app-file-grid-item>
+        </div>
+      </div>
+
+
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- <app-letter-pagination [isLoading]="isLoaded" (click)="paginate($event)"></app-letter-pagination> -->
+<app-letter-pagination *ngIf="files.length && isAllFilesListLoaded" [isLoading]="isLoaded" (click)="paginate($event)"></app-letter-pagination>

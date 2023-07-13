@@ -1,0 +1,50 @@
+<div class="w-100 file-management-container"
+
+  >
+    <div cdkDropList [cdkDropListData]="files" class="grid_view drop-area mosaic-list" (cdkDropListDropped)="drop($event)">
+
+        <!-- <div mat-subheader>Fichiers</div> -->
+        <div class="w-100 list-title">
+          <h4>
+            <mat-checkbox
+              [checked]="allComplete"
+              [color]="'primary'"
+              [indeterminate]="someComplete()"
+              (change)="setAll($event)"
+            >
+            </mat-checkbox>
+
+            Fichiers
+          </h4>
+        </div>
+
+      <mat-list
+          class="list-group dropable-list d-flex flex-column"
+          id="all"
+          cdkDropList
+          [cdkDropListData]="files"
+          (cdkDropListDropped)="drop($event)">
+        <mat-list-item
+          ngContextMenu="fileContext"
+          *ngFor="let file of files; let i = index"
+          [ngContextData]="file"
+          class="list-group-item dropable-list-item p-0 omit-globalContext w-100"
+          [cdkDragData]="file" cdkDrag
+        >
+
+          <mat-checkbox
+            [checked]="checkedFileList[i]?.completed"
+            (change)="checkChange($event, file.id)"
+          ></mat-checkbox>
+
+          <app-file-list-item (mousedown)="onMouseDown(i, 'file')" [file]="file"></app-file-list-item>
+
+            <!-- <file-list-item [file]="folder"></file-list-item> -->
+
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+
+
+  <app-letter-pagination *ngIf="files.length && isAllFilesListLoaded" [isLoading]="isLoaded" (click)="paginate($event)"></app-letter-pagination>

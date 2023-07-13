@@ -1,0 +1,22 @@
+
+.letter-pagination {
+
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    a:not([href]):not([class]) {
+      color: #007bff;
+      text-decoration: none;
+      &:hover {
+        color: rgb(0, 40, 149);
+      }
+
+    }
+  }
+
+  // .spinner {
+  //   background-color: red;
+  // }
+}
+

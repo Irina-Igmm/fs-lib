@@ -1,0 +1,20 @@
+{
+  "messages": {
+    "error": {
+      "verifyConnexion": {
+        "title": "",
+        "message": "Une erreur s'est produite, veuillez vérifier votre connexion internet"
+      },
+      "tryAgain": {
+        "title": "",
+        "message": "Une erreur s'est produite, veuillez réessayer"
+      }
+    },
+    "success": {
+      "copySuccess": {
+        "title": "",
+        "message": "éléments copiés."
+      }
+    }
+  }
+}

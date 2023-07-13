@@ -1,0 +1,12 @@
+<div class="letter-pagination flex-lg-row-reverse d-flex">
+
+    <span *ngIf="!isLoading" class="pull-right">
+      <a role="button">En afficher d'avantages</a>
+    </span>
+
+
+  <div *ngIf="isLoading" class="spinner text-center">
+    <div class="spinner-grow spinner-grow-sm text-primary" role="status">
+    </div>
+  </div>
+</div>

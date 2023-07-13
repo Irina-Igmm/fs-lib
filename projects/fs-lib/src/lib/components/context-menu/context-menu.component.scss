@@ -1,0 +1,11 @@
+::ng-deep {
+  app-context-menu {
+    position: absolute;
+
+    .custom-dropdown-menu {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+    }
+  }
+}

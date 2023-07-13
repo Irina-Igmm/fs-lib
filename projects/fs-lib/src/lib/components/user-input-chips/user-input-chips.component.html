@@ -1,0 +1,26 @@
+<form [formGroup]="userSearchForm">
+    <mat-form-field class="users-chip-list" appearance="fill">
+      <mat-label>Email</mat-label>
+      <mat-chip-list #chipGrid aria-label="user selection">
+        <mat-chip *ngFor="let user of users.value" (removed)="remove(user)">
+          {{user.email}}
+          <button matChipRemove [attr.aria-label]="'remove ' + user">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+      </mat-chip-list>
+      <input placeholder="search email..."  #userSearchInput formControlName="userSearchControl"
+        [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)"/>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option 
+        *ngFor="let user of filteredUsers"  [value]="user" 
+          
+        >
+          {{user.email}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+  

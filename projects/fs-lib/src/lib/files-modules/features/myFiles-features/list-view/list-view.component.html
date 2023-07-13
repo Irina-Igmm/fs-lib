@@ -1,0 +1,125 @@
+
+<recent-list-view *ngIf="addRecentSection" [recents]="recents"></recent-list-view>
+
+<folder-list-view
+  [folders]="folders"
+  (fetchMore)="onFetchFolderMore()"
+  (dblClick)="onDblClick($event)">
+</folder-list-view>
+
+<file-list-view [files]="files" (fetchMore)="onFetchFileMore()"></file-list-view>
+
+<!-- <app-file-list-view [files]="files"></app-file-list-view> -->
+
+<!-- <app-file-list-view></app-file-list-view> -->
+
+
+
+
+      <!-- <div class="top-search-wrapper">
+        <div class="search-form-container">
+          <form>
+            <div class="alg-search-form w-100">
+              <div class="search-wrapper">
+                <input type="search" class="form-control" placeholder="Rechercher media">
+              </div>
+              <div class="btn-search-wrapper">
+                <button type="submit" class="btn btn-search">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="theme-control-container">
+          <div class="theme-toggler">
+            <span class="icon-list them-toogler-item">
+
+            </span>
+            <span class="icon-mosaic them-toogler-item">
+
+            </span>
+          </div>
+        </div>
+      </div> -->
+
+
+
+
+
+      <!-- TODO: FILE LIST -->
+
+
+
+<!--
+        <div cdkDropList [cdkDropListData]="files" class="drop-area mosaic-list" (cdkDropListDropped)="drop($event)">
+
+          <div class="w-100 list-title">
+            <h4>
+              Fichier
+            </h4>
+          </div>
+
+          <ul class="list-group dropable-list"
+              id="all"
+              cdkDropList
+              [cdkDropListData]="files"
+              (cdkDropListDropped)="drop($event)">
+
+            <ng-template>
+
+            </ng-template>
+
+            <ng-container *ngIf="loaded; else skeleton">
+              <li class="list-group-item dropable-list-item" *ngFor="let file of files" [cdkDragData]="file" cdkDrag>
+
+                <div class="alg-content-item w-100 h-100">
+                  <div class="w-100 thumbnail-item">
+                    <span class="thumblail-icon">
+                      <span *ngIf="file.type == 'FLD'" class="thumb-fld">
+                        <img [src]="'assets/images/icons/folder.png'" alt="">
+                      </span>
+                      <span *ngIf="file.type == 'PDF'" class="thumb-doc">
+                        <img [src]="'assets/images/icons/pdf-file.png'" alt="">
+                      </span>
+                      <span *ngIf="file.type == 'VID'" class="thumb-doc">
+                        <img [src]="'assets/images/icons/video-player.png'" alt="">
+                      </span>
+
+                      <span *ngIf="file.type == 'IMG'" class="thumb-img">
+                        <img [src]="'assets/images/onur-binay-auf3GwpVaOM-unsplash.png'" alt="">
+                      </span>
+                    </span>
+                  </div>
+                  <div class="w-100 content-item">
+                    <div class="content-title">
+                      <h6 class="info-title">
+                        {{file.name}}
+                        <span class="infos-count">
+                          <span class="size">{{file.size}}</span>
+                          <span class="file-in" *ngIf="file.type == 'FLD'">
+                            5
+
+                          </span>
+                        </span>
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+
+              </li>
+            </ng-container>
+            <ng-template #skeleton>
+              <app-skeleton *ngFor="let file of files" [fileType]="file.type"></app-skeleton>
+            </ng-template>
+
+
+
+
+
+          </ul>
+        </div>
+      </div> -->
+
+

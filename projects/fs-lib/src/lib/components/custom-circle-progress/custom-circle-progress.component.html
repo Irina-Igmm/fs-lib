@@ -1,0 +1,61 @@
+
+
+<div (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+<!-- <div (mouseleave)="onMouseLeave"> -->
+
+  <circle-progress (onClick)="onCancel()" *ngIf="!isOnHover"
+              [percent]="fileToUpload.progress"
+                [radius]="12"
+                [outerStrokeWidth]="4"
+                [innerStrokeWidth]="1"
+                [outerStrokeColor]="'#4CAC4C'"
+                [innerStrokeColor]="'#F2F5FF'"
+                [outerStrokeLinecap]="outerStrokeLineCape"
+                [animation]="false"
+                [renderOnClick]="false"
+                [showInnerStroke]="true"
+                [showSubtitle]="false"
+                [space]="0"
+                [innerStrokeWidth]="15"
+                [animationDuration]="1000"
+                [showTitle]=false
+                [showSubtitle]=false
+                [showBackground]="false"
+                [showUnits]="false"
+                [showImage]="true"
+                [imageHeight]="18"
+                [imageWidth]="18"
+                [imageSrc]="imagePath">
+            </circle-progress>
+
+
+
+
+            <circle-progress (onClick)="onRetry()" *ngIf="isOnHover"
+              [percent]="fileToUpload.progress"
+                [radius]="12"
+                [outerStrokeWidth]="4"
+                [innerStrokeWidth]="1"
+                [outerStrokeColor]="'#4CAC4C'"
+                [innerStrokeColor]="'#F2F5FF'"
+                [outerStrokeLinecap]="outerStrokeLineCape"
+                [animation]="false"
+                [renderOnClick]="false"
+                [showInnerStroke]="true"
+                [showSubtitle]="false"
+                [space]="0"
+                [innerStrokeWidth]="15"
+                [animationDuration]="1000"
+                [showTitle]=false
+                [showSubtitle]=false
+                [showBackground]="false"
+                [showUnits]="false"
+                [showImage]="true"
+                [imageHeight]="18"
+                [imageWidth]="18"
+                [imageSrc]="imagePathOnHover">
+            </circle-progress>
+
+
+</div>
+

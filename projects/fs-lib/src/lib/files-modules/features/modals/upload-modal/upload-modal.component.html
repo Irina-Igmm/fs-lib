@@ -1,0 +1,180 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">
+    Insérer des fichier avec media
+    <button type="button" class="btn btn-close" aria-label="Close" (click)="closeModal()">
+      <i class="fa-sharp fa-solid fa-xmark"></i>
+    </button>
+  </h4>
+
+
+  <div class="tab-header">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+      <li [ngbNavItem]="1" [ngClass]="{'active': active == 1}">
+        <button ngbNavLink (click)="showTab(1)" class="nav-button">Mes fichiers</button>
+        <ng-template ngbNavContent>
+
+          <div class="upload-contant">
+            <div class="top-search-wrapper">
+              <div class="search-form-container">
+                <form>
+                  <div class="alg-search-form w-100">
+                    <div class="search-wrapper">
+                      <input type="search" class="form-control" placeholder="Rechercher media">
+                    </div>
+                    <div class="btn-search-wrapper">
+                      <button type="submit" class="btn btn-search">
+                        <i class="fa fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <div class="theme-control-container">
+                <div class="theme-toggler">
+                  <span class="icon-list them-toogler-item">
+
+                  </span>
+                  <span class="icon-mosaic them-toogler-item">
+
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="w-100 file-management-container">
+
+              <!--
+    Avalables class of the list to add at drop area
+    mosaic: mosaic-list
+    mosaic: ligne-list
+  -->
+
+              <div cdkDropList [cdkDropListData]="movies" class="drop-area"
+                   [ngClass]="status ? 'mosaic-list' : 'ligne-list'"
+                   (cdkDropListDropped)="drop($event)">
+
+                <div class="w-100 list-title">
+                  <h4>
+                    Fichier
+                  </h4>
+                </div>
+
+                <ul class="list-group dropable-list"
+                    id="all"
+                    cdkDropList
+                    [cdkDropListData]="movies"
+                    (cdkDropListDropped)="drop($event)">
+                  <li class="list-group-item dropable-list-item" *ngFor="let movie of movies" [cdkDragData]="movie"
+                      cdkDrag>
+                    <!--cdk-drop-list-dragging-->
+
+                    <div class="alg-content-item w-100 h-100">
+                      <div class="w-100 thumbnail-item">
+                        <span class="thumblail-icon">
+                          <span *ngIf="movie.type == 'FLD'" class="thumb-fld">
+                            <img [src]="'assets/images/icons/'+movie.icon" alt="">
+                          </span>
+                          <span *ngIf="movie.type == 'DOC'" class="thumb-doc">
+                            <img [src]="'assets/images/icons/'+movie.icon" alt="">
+                          </span>
+                          <span *ngIf="movie.type == 'IMG'" class="thumb-img">
+                            <img [src]="'assets/images/'+movie.icon" alt="">
+                          </span>
+                        </span>
+                      </div>
+                      <div class="w-100 content-item">
+                        <div class="content-title">
+                          <h6 class="info-title">
+                            <span>{{movie.title}}</span>
+                            <span class="infos-count">
+                              <span class="created-at hide-on-toggle">{{movie.createdAt}}</span>
+                              <span class="size">{{movie.f_size}}</span>
+                              <span class="file-in" *ngIf="movie.type == 'FLD'"> {{movie.f_in}}</span>
+                              <span class="icon-dots hide-on-toggle" *ngIf="movie.type != 'FLD'"> </span>
+                            </span>
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="2" [ngClass]="{'active': active == 2}">
+        <button ngbNavLink (click)="showTab(2)" class="nav-button">Partagés</button>
+        <ng-template ngbNavContent>
+          <p>
+            Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko
+            farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean
+            shorts
+            ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar
+            helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes
+            anderson
+            8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester
+            stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+          </p>
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="3" [ngClass]="{'active': active == 3}">
+        <button (click)="showTab(3)" class="nav-button"> Archivés</button>
+        <ng-template ngbNavContent>
+          <p>
+            Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla
+            facilisi.
+            Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et
+            odio.
+            Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam
+            urna,
+            egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim,
+            nec
+            tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus
+            et
+            magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies in eget
+            neque. Phasellus nec tortor vel tellus pulvinar feugiat.
+          </p>
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="4" [ngClass]="{'active': active == 4}">
+        <button (click)="showTab(4)" class="nav-button"> Partagés avec moi</button>
+        <ng-template ngbNavContent>
+          <p>
+            Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla
+            facilisi.
+            Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et
+            odio.
+            Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam
+            urna,
+            egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim,
+            nec
+            tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus
+            et
+            magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies in eget
+            neque. Phasellus nec tortor vel tellus pulvinar feugiat.
+          </p>
+        </ng-template>
+      </li>
+    </ul>
+  </div>
+
+</div>
+<div class="modal-body">
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>
+
+<div class="modal-footer justify-content-start">
+  <div class="alg-inline-btn">
+    <button class="btn btn-select validation in-modal">
+      Sélectionner
+    </button>
+    <button class="btn btn-select cancel in-modal ml-4" (click)="closeModal()">
+      Annuler
+    </button>
+  </div>
+</div>

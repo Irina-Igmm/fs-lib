@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="main-content d-flex">
+    <div class="sidebar-wrapper">
+      <left-sidebar></left-sidebar>
+    </div>
+
+    <div class="page-content">
+
+      <div class="top-search-wrapper">
+        <div class="search-form-container">
+          <form [formGroup]="searchForm" (ngSubmit)="submitSearch()">
+            <div class="alg-search-form w-100">
+              <div class="search-wrapper">
+                <input type="search" class="form-control" formControlName="searchControl" placeholder="Rechercher media">
+              </div>
+              <div class="btn-search-wrapper">
+                <button type="submit" class="btn btn-search">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <file-view-switcher (switchViewEvent)="switchView($event)"></file-view-switcher>
+
+      </div>
+
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<!-- <app-footer></app-footer> -->

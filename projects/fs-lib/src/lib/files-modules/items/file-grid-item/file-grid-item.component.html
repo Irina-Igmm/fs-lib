@@ -1,0 +1,33 @@
+<!-- <li class="list-group-item dropable-list-item col-lg-3 col-md-4 col-sm-10 col-10" cdkDrag> -->
+
+<div class="w-100 h-100">
+  <div class="margin w-100 h-100 omit-globalContext alg-content-item">
+    <div class="w-100 h-100 thumbnail-item pb-3" >
+      <div class="w-100 h-100 thumbnail-item  ">
+        <span class="thumblail-icon">
+          <span *ngIf="file.type == 'DOC'" class="thumb-doc">
+            <img [src]="'assets/images/icons/word-logo.png'" alt="">
+          </span>
+          <span *ngIf="file.type == 'IMG'" class="thumb-img">
+            <img [src]="'assets/images/word-logo.png'" alt="">
+          </span>
+        </span>
+      </div>
+      <div class="w-100 content-item">
+        <div class="content-title">
+          <h6 class="info-title">
+            {{file.name}}
+            <span class="infos-count">
+              <span class="size">{{file.size}}</span>
+              <span class="file-in" *ngIf="file.type == 'FLD'">
+                <!-- - {{file.f_in}} -->
+              </span>
+            </span>
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- </li> -->

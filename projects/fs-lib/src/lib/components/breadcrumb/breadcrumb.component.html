@@ -1,0 +1,3 @@
+<ng-container *ngFor="let partition of pathPartitions">
+  <span (click)="navigate(partition)">{{ partition.label ? partition.label : "Mon stockage" }}</span>/
+</ng-container>

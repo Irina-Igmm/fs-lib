@@ -1,0 +1,31 @@
+<div class="w-100 file-management-container "
+  >
+    <div cdkDropList [cdkDropListData]="folders" class="grid_view drop-area mosaic-list">
+
+      <mat-list
+          class="list-group dropable-list d-flex flex-column"
+          id="all"
+        >
+        <mat-radio-group [formControl]="folderControl">
+
+        <mat-list-item
+          ngContextMenu="folderContext"
+          *ngFor="let folder of folders; let i = index"
+          [ngContextData]="folder"
+          ngContextData="test"
+          class="list-group-item dropable-list-item p-0 omit-globalContext w-100"
+          [cdkDragData]="folder" cdkDrag
+          >
+
+            <mat-radio-button #button [value]="folder.id" (onDoubleClick)="fetchContents(folder)" (click)="checkState(button)">
+              <app-folder-item class="folder" folderId="5" (mousedown)="onMouseDown(i)" [folder]="folder"></app-folder-item>
+            </mat-radio-button>
+
+        </mat-list-item>
+      </mat-radio-group>
+
+      </mat-list>
+    </div>
+  </div>
+
+  <!-- <app-letter-pagination *ngIf="folders.length && isAllFoldersListLoaded" [isLoading]="isLoaded" (click)="paginate($event)"></app-letter-pagination> -->

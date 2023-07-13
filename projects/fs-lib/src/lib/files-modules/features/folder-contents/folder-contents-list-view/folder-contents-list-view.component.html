@@ -1,0 +1,7 @@
+<folder-list-view
+  [folders]="folders"
+  (fetchMore)="onFetchFolderMore()"
+  (dblClick)="onDblClick($event)">
+</folder-list-view>
+
+<file-list-view [files]="files" (fetchMore)="onFetchFileMore()"></file-list-view>

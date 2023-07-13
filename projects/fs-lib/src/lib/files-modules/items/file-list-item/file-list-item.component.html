@@ -1,0 +1,43 @@
+<mat-list-item class="w-100">
+  <div class=" d-flex align-items-center w-100 " style="height: 50px;">
+    <div class="col-5 d-flex align-items-center">
+      <div class="thumbnail-item">
+        <span class="thumblail-icon">
+          <span *ngIf="file?.type == 'DOC'" class="thumb-doc">
+            <img [src]="'assets/images/icons/word-logo.png'" alt="" />
+          </span>
+          <span *ngIf="file?.type == 'IMG'" class="thumb-img">
+            <img [src]="'assets/images/icons/google-docs.png'" alt="" />
+          </span>
+        </span>
+      </div>
+      <div matListItemTitle class="bloc-start-name">{{ file?.name }}</div>
+    </div>
+    <div class="col-7 d-flex justify-content-end">
+      <div matListItemLine class="mx-auto"> {{ file?.createdAt | date:'dd-MM-yyyy' }} </div>
+      <div matListItemLine class="mx-auto"> {{ (file?.fileSize ?? 0) | fileSize: 'megaoctets' }} </div>
+      <div matListItemLine class="align-self-end"><img src="assets/images/icons/dots-icons.png" alt=""></div>
+    </div>
+  </div>
+
+  <!-- <div class="bloc-content d-flex align-items-center">
+    <div class="bloc-start d-flex align-items-center">
+      <div class="thumbnail-item>">
+        <span class="thumblail-icon">
+          <span *ngIf="file?.type == 'DOC'" class="thumb-doc">
+            <img [src]="'assets/images/icons/word-logo.png'" alt="" />
+          </span>
+          <span *ngIf="file?.type == 'IMG'" class="thumb-img">
+            <img [src]="'assets/images/icons/google-docs.png'" alt="" />
+          </span>
+        </span>
+      </div>
+      <div matListItemTitle class="bloc-start-name">{{ file?.name }}</div>
+    </div>
+    <div class="bloc-end d-flex justify-content-between">
+      <div matListItemLine>08-03-2023</div>
+      <div matListItemLine>5Mo</div>
+      <div matListItemLine><img src="assets/images/icons/dots-icons.png" alt=""></div>
+    </div>
+  </div> -->
+</mat-list-item>

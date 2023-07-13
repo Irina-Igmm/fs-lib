@@ -1,0 +1,14 @@
+<span mat-icon-button class="btn previous-path" (click)="goToPreviousList()">
+  <mat-icon>arrow_back</mat-icon> <span><h2>{{ previousButtonLabel }}</h2></span>
+</span>
+
+<breadcrumb [pathPartitions]="fullPath" (onNavigate)="navigateWithBreadCrumb($event)"></breadcrumb>
+
+<folders-list [folders]="folders" (dblClick)="accessingFolder($event, false, 'access')" (valueChange)="onFolderCheck($event)"></folders-list>
+
+<files-list [files]="files"></files-list>
+
+<button class="disabled-button" mat-button class="btn upload-btn" [ngClass]="{'disabled-button': !validSelect}" (click)="onMove()">
+  <!-- <span class="icon-plus in-upload"></span> Upload -->
+  Déplacer
+</button>

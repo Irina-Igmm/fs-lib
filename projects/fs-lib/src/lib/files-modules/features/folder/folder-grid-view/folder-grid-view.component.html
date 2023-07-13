@@ -1,0 +1,54 @@
+<div class="w-100 file-management-container"
+
+  >
+    <div cdkDropList [cdkDropListData]="folders" class="grid_view drop-area mosaic-list" (cdkDropListDropped)="drop($event)">
+
+      <div class="w-100 list-title">
+        <h4>
+          <mat-checkbox
+            [checked]="allComplete"
+            [color]="'primary'"
+            [indeterminate]="someComplete()"
+            (change)="setAll($event)"
+          >
+          </mat-checkbox>
+
+          Dossiers
+        </h4>
+      </div>
+
+      <ul class="list-group dropable-list row"
+          id="all"
+          cdkDropList
+          [cdkDropListData]="folders"
+          (cdkDropListDropped)="drop($event)">
+        <li
+          ngContextMenu="folderContext"
+          class="list-group-item dropable-list-item col-lg-3 col-md-4 col-sm-10 col-10 omit-globalContext"
+          *ngFor="let folder of folders; let i = index"
+          [ngContextData]="folder"
+          [cdkDragData]="folder" cdkDrag
+
+          [class]="{'blink': (newFolder && newFolder.id == folder.id) ? true : false}"
+          (onDoubleClick)="onDblCLick(folder)"
+          >
+          <div class="row">
+            <div class="col-12">
+              <mat-checkbox
+              [checked]="checkedFolderList[i]?.completed"
+                (change)="checkChange($event, folder.id)" ></mat-checkbox>
+            </div>
+
+            <div class=" col-12 h-75" >
+              <app-folder-grid-item ngContextMenu="folderContext" (mousedown)="onMouseDown(i, 'folder')" [file]="folder" class="" [cdkDragData]="folder" cdkDrag></app-folder-grid-item>
+            </div>
+
+          </div>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <app-letter-pagination *ngIf="folders.length && isAllFoldersListLoaded" [isLoading]="isLoaded" (click)="paginate($event)"></app-letter-pagination>

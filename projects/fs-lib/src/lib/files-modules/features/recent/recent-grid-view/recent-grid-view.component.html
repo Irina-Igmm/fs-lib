@@ -1,0 +1,35 @@
+
+<div class="w-100 file-management-container"
+
+>
+  <div cdkDropList [cdkDropListData]="recents" class="grid_view drop-area mosaic-list" (cdkDropListDropped)="drop($event)">
+
+    <div class="w-100 list-title">
+      <h4>
+        Récents
+      </h4>
+    </div>
+    <!-- <app-file-grid-item [file]="file" class="" *ngFor="let file of files" [cdkDragData]="file" cdkDrag>
+
+    </app-file-grid-item> -->
+
+    <ul class="list-group dropable-list row"
+        id="all"
+        cdkDropList
+        [cdkDropListData]="recents"
+        (cdkDropListDropped)="drop($event)">
+      <li
+        ngContextMenu="fileContext"
+        class="list-group-item dropable-list-item col-lg-3 col-md-4 col-sm-10 col-10 omit-globalContext"
+        *ngFor="let recent of recents"
+        [ngContextData]="recent"
+        [cdkDragData]="recent" cdkDrag
+      >
+
+        <app-file-grid-item *ngIf="$any(recent).type" [file]="recent" [file]="recent" class="" [cdkDragData]="recent" cdkDrag>  </app-file-grid-item>
+
+        <app-folder-grid-item *ngIf="!$any(recent).type" [file]="recent" class="" [cdkDragData]="recent" cdkDrag></app-folder-grid-item>
+      </li>
+    </ul>
+  </div>
+</div>

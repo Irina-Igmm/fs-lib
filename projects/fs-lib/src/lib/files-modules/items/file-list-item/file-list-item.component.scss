@@ -1,0 +1,13 @@
+::ng-deep {
+  app-file-list-item {
+    width: 100%;
+
+    mat-list-item {
+      .mat-list-item-content {
+        // background: red;
+        padding: 0px !important;
+        // padding-right: 0;
+      }
+    }
+  }
+}

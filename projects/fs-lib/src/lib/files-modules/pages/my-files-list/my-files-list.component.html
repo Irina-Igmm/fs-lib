@@ -1,0 +1,292 @@
+<div class="my-files-list " appDrop (fileDropped)="onFileDropped($event)" (test)="onTest($event)">
+  <div ngContextMenu="globalContext">
+
+    <app-grid-view
+      [recents]="recentList.value"
+      [folders]="foldersList.value"
+      [files]="filesList.value" [drop]="drop"
+      (scrolled)="onScroll($event)"
+      *ngIf="!listView"
+      (fetchFileMore)="onFetchFileMore()"
+      (fetchFolderMore)="onFetchFolderMore()"
+      (dblClickFolder)="onDblClickFolder($event)"
+    ></app-grid-view>
+
+    <app-list-view
+      [recents]="recentList.value"
+      [folders]="foldersList.value"
+      [files]="filesList.value"
+      [drop]="drop"
+      *ngIf="listView"
+      (fetchFileMore)="onFetchFileMore()"
+      (fetchFolderMore)="onFetchFolderMore()"
+      (dblClickFolder)="onDblClickFolder($event)"
+    ></app-list-view>
+
+    <!-- {{contextMenu.}} -->
+
+    <app-context-menu contextId="globalContext" >
+      <div class="context-menu" >
+        <ul class="context-menu-list">
+          <li class="item-context-menu">
+            <span>
+              <i class=""></i>
+              Global context </span>
+          </li>
+          <li class="item-context-menu">
+            <span (click)="onNewFolder()">
+              <i class="fa-solid fa-eye mr-3"></i>
+              Nouveau dossier</span>
+          </li>
+          <li class="item-context-menu">
+            <span>
+              <i class="fa-solid fa-eye mr-3"></i>
+              Aperçu</span>
+          </li>
+          <li
+            class="item-context-menu"
+            [ngClass]="{'disable': isMultiActionDisable}"
+            (click)="onArchive()"
+          >
+            <span>
+              <i class="fa-solid fa-box-archive mr-3"></i>
+              Archiver</span>
+          </li>
+          <li class="item-context-menu">
+            <span>
+              <i class="fa-solid fa-circle-info mr-3"></i>
+              Propriétés</span>
+          </li>
+          <li
+            class="item-context-menu"
+            [ngClass]="{'disable': isMultiActionDisable}"
+          >
+            <span>
+              <i class="fa-solid fa-share-nodes mr-3"></i>
+              Partager</span>
+          </li>
+          <li class="item-context-menu"
+            (click)="onMove()"
+          >
+            <span>
+              <i class="fa-regular fa-circle-right mr-3"></i>
+              Déplacer vers</span>
+          </li>
+          <li
+            class="item-context-menu" (click)="onCopy()"
+            [ngClass]="{'disable': !canCopy}"
+            >
+            <span>
+              <i class="fa-solid fa-clone mr-3"></i>
+              Copier</span>
+          </li>
+          <li
+            class="item-context-menu" (click)="onPaste()"
+            [ngClass]="{'disable': !canPaste}"
+            >
+            <span>
+              <i class="fa-solid fa-clone mr-3"></i>
+              Coller</span>
+          </li>
+          <li class="item-context-menu">
+            <span>
+              <i class="fa-regular fa-pen-to-square mr-3"></i>
+              Renommer</span>
+          </li>
+          <!-- <li class="item-context-menu">
+            <span>
+              <i class="fa-solid fa-download mr-3"></i>
+              Télécharger </span>
+          </li> -->
+          <li class="item-context-menu">
+            <span>
+              <i class="fa-solid fa-rotate-right mr-3"></i>
+              Actualiser </span>
+          </li>
+          <li
+            class="item-context-menu"
+            [ngClass]="{'disable': isMultiActionDisable}"
+            (click)="onDelete()"
+            >
+            <span>
+              <i class="fa-regular fa-trash-can mr-3"></i>
+              Supprimer </span>
+          </li>
+          <li
+            class="item-context-menu"
+            [ngClass]="{'disable': isMultiActionDisable}"
+            (click)="this.fileService.onDownload()"
+            >
+            <span>
+              <i class="fa-regular fa-trash-can mr-3"></i>
+              Télécharger </span>
+          </li>
+        </ul>
+      </div>
+    </app-context-menu>
+    <!--
+      la ngContextMenu fesant appel à contextId="folderContext"
+      se trouve dans folder-grid-view.component.html
+      et folder-list-view.component.html
+     -->
+    <app-context-menu contextId="folderContext" [(contextData)]="folderContextData">
+      <div class="context-menu" >
+        <ul class="context-menu-list">
+          <li class="item-context-menu">
+            <span>
+              <i class=""></i>
+              Folder context </span>
+          </li>
+          <li class="item-context-menu">
+            <span>
+              <i class="fa-solid fa-eye mr-3"></i>
+              Aperçu</span>
+          </li>
+          <li
+            class="item-context-menu"
+            (click)="onArchiveSingle(folderContextData, 'folder')"
+          >
+            <span>
+              <i class="fa-solid fa-box-archive mr-3"></i>
+              Archiver</span>
+          </li>
+          <li class="item-context-menu">
+            <span>
+              <i class="fa-solid fa-circle-info mr-3"></i>
+              Propriétés</span>
+          </li>
+          <li class="item-context-menu">
+            <span>
+              <i class="fa-solid fa-share-nodes mr-3"></i>
+              Partager</span>
+          </li>
+          <li class="item-context-menu"
+          (click)="onMove()"
+          >
+            <span>
+              <i class="fa-regular fa-circle-right mr-3"></i>
+              Déplacer vers</span>
+          </li>
+          <li class="item-context-menu">
+            <span>
+              <i class="fa-solid fa-clone mr-3"></i>
+              Copier/coller</span>
+          </li>
+          <li class="item-context-menu" (click)="onRename(folderContextData, 'folder')">
+            <span>
+              <i class="fa-regular fa-pen-to-square mr-3"></i>
+              Renommer</span>
+          </li>
+          <!-- <li class="item-context-menu">
+            <span>
+              <i class="fa-solid fa-download mr-3"></i>
+              Télécharger </span>
+          </li> -->
+          <li class="item-context-menu">
+            <span>
+              <i class="fa-solid fa-rotate-right mr-3"></i>
+              Actualiser </span>
+          </li>
+          <li class="item-context-menu" (click)="onDeleteSingle(folderContextData, 'folder')">
+            <span>
+              <i class="fa-regular fa-trash-can mr-3"></i>
+              Supprimer </span>
+          </li>
+          <li
+          class="item-context-menu"
+          [ngClass]="{'disable': isMultiActionDisable}"
+          (click)="this.fileService.onDownload()"
+          >
+          <span>
+            <i class="fa-regular fa-trash-can mr-3"></i>
+            Télécharger </span>
+        </li>
+
+        </ul>
+      </div>
+    </app-context-menu>
+
+    <app-context-menu contextId="fileContext" [(contextData)]="fileContextData">
+      <div class="context-menu" >
+        <ul class="context-menu-list">
+          <li class="item-context-menu">
+            <span>
+              <i class=""></i>
+              File context </span>
+          </li>
+          <li class="item-context-menu">
+            <span>
+              <i class="fa-solid fa-eye mr-3"></i>
+              Aperçu</span>
+          </li>
+          <li
+            class="item-context-menu"
+            (click)="onArchiveSingle(fileContextData, 'file')"
+          >
+            <span>
+              <i class="fa-solid fa-box-archive mr-3"></i>
+              Archiver</span>
+          </li>
+          <li class="item-context-menu">
+            <span>
+              <i class="fa-solid fa-circle-info mr-3"></i>
+              Propriétés</span>
+          </li>
+          <li class="item-context-menu">
+            <span>
+              <i class="fa-solid fa-share-nodes mr-3"></i>
+              Partager</span>
+          </li>
+          <li class="item-context-menu"
+          (click)="onMove()"
+          >
+            <span>
+              <i class="fa-regular fa-circle-right mr-3"></i>
+              Déplacer vers</span>
+          </li>
+          <li
+            class="item-context-menu" (click)="onCopy()"
+            [ngClass]="{'disable': !canCopy}"
+            >
+            <span>
+              <i class="fa-solid fa-clone mr-3"></i>
+              Copier</span>
+          </li>
+          <li class="item-context-menu" (click)="onRename(fileContextData, 'file')">
+            <span>
+              <i class="fa-regular fa-pen-to-square mr-3"></i>
+              Renommer</span>
+          </li>
+          <!-- <li class="item-context-menu">
+            <span>
+              <i class="fa-solid fa-download mr-3"></i>
+              Télécharger </span>
+          </li> -->
+          <li class="item-context-menu">
+            <span>
+              <i class="fa-solid fa-rotate-right mr-3"></i>
+              Actualiser </span>
+          </li>
+          <li class="item-context-menu" (click)="onDeleteSingle(fileContextData, 'file')">
+            <span>
+              <i class="fa-regular fa-trash-can mr-3"></i>
+              Supprimer </span>
+          </li>
+          <li
+          class="item-context-menu"
+          [ngClass]="{'disable': isMultiActionDisable}"
+          (click)="this.fileService.onDownload()"
+          >
+          <span>
+            <i class="fa-regular fa-trash-can mr-3"></i>
+            Télécharger </span>
+        </li>
+
+        </ul>
+      </div>
+    </app-context-menu>
+
+  </div>
+</div>
+
+

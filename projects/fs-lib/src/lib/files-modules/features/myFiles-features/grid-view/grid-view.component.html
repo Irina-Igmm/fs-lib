@@ -1,0 +1,10 @@
+
+  <recent-grid-view *ngIf="addRecentSection" [recents]="recents"></recent-grid-view>
+
+  <folder-grid-view
+    [folders]="folders"
+    (fetchMore)="onFetchFolderMore()"
+    (dblClick)="onDblClick($event)">
+  </folder-grid-view>
+
+  <file-grid-view [files]="files" (fetchMore)="onFetchFileMore()"></file-grid-view>

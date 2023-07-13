@@ -1,0 +1,143 @@
+<div class="row" style="padding: 60px 0px 0 0;">
+  <div class="col- storage-pregress-wrapper ">
+    <div class="storage-pregress-inner box-bordered-grey">
+      <!--https://www.npmjs.com/package/ng-circle-progress-->
+      <circle-progress
+                       [percent]="75"
+                       [radius]="100"
+                       [outerStrokeWidth]="16"
+                       [innerStrokeWidth]="15"
+                       [outerStrokeColor]="'#2EBD56'"
+                       [innerStrokeColor]="'#F2F5FF'"
+                       [animation]="true"
+                       [showInnerStroke]="true"
+                       [showSubtitle]="false"
+                       [outerStrokeWidth]="15"
+                       [space]="-15"
+                       [units]="'GB'"
+                       [title]="'15'"
+                       [innerStrokeWidth]="15"
+                       [animationDuration]="1000"
+                       [class]="'storage-progress'"></circle-progress>
+      <div class="upgrate-btn-inner p-3 text-center">
+        <button class="btn storage-upgrade">
+          Upgrade
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col storage-detail ">
+    <ul class="list-group storage-list box-bordered-grey">
+      <li class="list-group-item storage-item storage-item-danger">
+        <div class="storage-icon">
+          <span class="icon-file">
+
+          </span>
+        </div>
+        <div class="storage-detail">
+          <div class="storage-info">
+            <span class="info-title">
+              Images
+              <small>150 fichiers</small>
+            </span>
+            <span class="info-size">
+              2 GB
+            </span>
+          </div>
+          <div class="w-100 storage-progress">
+            <progress-bar [sizeProgress]="15"></progress-bar>
+          </div>
+        </div>
+      </li>
+
+      <li class="list-group-item storage-item storage-item-warning">
+        <div class="storage-icon">
+          <span class="icon-picture">
+
+          </span>
+        </div>
+        <div class="storage-detail">
+          <div class="storage-info">
+            <span class="info-title">
+              Documents
+              <small>70 fichiers</small>
+            </span>
+            <span class="info-size">
+              8 GB
+            </span>
+          </div>
+          <div class="w-100 storage-progress">
+            <progress-bar [sizeProgress]="60"></progress-bar>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item storage-item storage-item-info">
+        <div class="storage-icon">
+          <span class="icon-movie">
+
+          </span>
+        </div>
+        <div class="storage-detail">
+          <div class="storage-info">
+            <span class="info-title">
+              Vidéos
+              <small>25 fichiers</small>
+            </span>
+            <span class="info-size">
+              0,5 GB
+            </span>
+          </div>
+          <div class="w-100 storage-progress">
+            <progress-bar [sizeProgress]="5"></progress-bar>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item storage-item storage-item-blue">
+        <div class="storage-icon">
+          <span class="icon-audio">
+
+          </span>
+        </div>
+        <div class="storage-detail">
+          <div class="storage-info">
+            <span class="info-title">
+              Audios
+              <small>25 fichiers</small>
+            </span>
+            <span class="info-size">
+              0,5 GB
+            </span>
+          </div>
+          <div class="w-100 storage-progress">
+            <progress-bar [sizeProgress]="5"></progress-bar>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item storage-item storage-item-purple">
+        <div class="storage-icon">
+          <span class="icon-app">
+
+          </span>
+        </div>
+        <div class="storage-detail">
+          <div class="storage-info">
+            <span class="info-title">
+              Applications
+              <small>225 fichiers</small>
+            </span>
+            <span class="info-size">
+              7 GB
+            </span>
+          </div>
+          <div class="w-100 storage-progress">
+            <progress-bar [sizeProgress]="55"></progress-bar>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+
+</div>
